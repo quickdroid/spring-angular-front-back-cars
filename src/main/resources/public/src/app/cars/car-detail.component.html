@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+    <div class="panel-heading">{{ pageTitle }}</div>
+    <div class="panel-body">
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-3'>Name:</div>
+                    <div class='col-md-6'>{{car?.name}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Price:</div>
+                    <div class='col-md-6'>{{car?.price|currency:'USD':true}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Speed:</div>
+                    <div class='col-md-6'>{{car?.speed}} KM/h</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Engine Type:</div>
+                    <div class='col-md-6'>{{car?.engineType}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='panel-footer'>
+        <a class='btn btn-default' (click)='goBack()' style='width:90px'>
+            <i class='glyphicon glyphicon-chevron-left'></i> Return
+        </a>
+    </div>
+</div>

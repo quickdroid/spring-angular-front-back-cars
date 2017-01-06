@@ -1,0 +1,47 @@
+<h1>{{ pageTitle }}</h1>
+
+<!-- Table -->
+<div class="table-responsive">
+    <table class="table"
+           *ngIf='cars && cars.length'>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Speed</th>
+            <th>Engine Type</th>
+<!--            <th>Brand</th>
+            <th>Model Type</th>-->
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor='let car of cars'>
+            <td><a [routerLink]="['/car', car.id]">
+                {{car.name | uppercase}}
+            </a>
+            </td>
+            <td>{{ car.price | currency:'EUR':true:'1.2-2' }}</td>
+
+            <td>{{ car.speed }}KM/h</td>
+            <td>{{ car.engineType }}</td>
+<!--            <td>{{ car.brand }}</td>    // todo change logic
+            <td>{{ car.modelType }}</td>-->
+
+            <td>
+                <a [routerLink]="['/car', car.id]">
+                    <button type="button" class="btn btn-sm btn-primary">View</button>
+                </a>
+                <a [routerLink]="['/car-edit', car.id]">
+                    <button type="button" class="btn btn-sm btn-warning">Edit</button>
+                </a>
+
+                <button type="button" class="btn btn-sm btn-danger"
+                        (click)="deleteCar(car)"
+                >Delete</button>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

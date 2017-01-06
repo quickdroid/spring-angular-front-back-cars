@@ -1,0 +1,101 @@
+<form  class="form-horizontal" novalidate #form="ngForm" (submit)="submitCar(form)">
+    <div class="form-group" [class.has-error]="name.invalid && name.touched">
+        <label for="name" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+            <input #name="ngModel" type="text" class="form-control" id="name" name="name" placeholder="Car Name" required
+                   [(ngModel)]="car.name" pattern="^[A-Za-z0-9 ]{2,}[A-Za-z0-9 ]*$" />
+            <div *ngIf="name.invalid && name.touched" class="alert alert-danger">
+                Name is required and should be composed only from letters, numbers and spaces. <br>
+                Minimum 3 characters
+            </div>
+        </div>
+    </div>
+    <!-- todo add brand and modelType-->
+    <!--    <div class="form-group" [class.has-error]="hasTypeError">
+        <label class="col-sm-2 control-label">Model Type</label>
+        <div class="col-sm-10">
+            <select class="form-control" #modelType
+                    name="color"
+                    (blur)="validateType(modelType.value)"
+                    (change)="validateType(modelType.value)"
+                    [(ngModel)]="car.modelType">
+                <option *ngFor="let t of selectType">
+                    {{ t }}
+                </option>
+            </select>
+            <div *ngIf="hasTypeError" class="alert alert-danger">
+                Please choose one of available types.
+            </div>
+        </div>
+    </div>-->
+<!--    <div class="form-group" [class.has-error]="hasBrandError">
+        <label class="col-sm-2 control-label">Brand</label>
+        <div class="col-sm-10">
+            <select class="form-control"
+                    name="size" #brand
+                    (blur)="validateBrand(brand.value)"
+                    (change)="validateBrand(brand.value)"
+                    [(ngModel)]="car.brand">
+                <option *ngFor="let b of selectBrand">
+                    {{ b }}
+                </option>
+            </select>
+            <div *ngIf="hasBrandError" class="alert alert-danger">
+                Please choose one of available brands.
+            </div>
+
+        </div>
+    </div>-->
+    <div class="form-group" [class.has-error]="price.invalid && price.touched">
+        <label for="price" class="col-sm-2 control-label">Price</label>
+        <div class="col-sm-10">
+            <input type="text"  class="form-control" id="price" name="price" placeholder="Car Price" required
+                   #price="ngModel" [(ngModel)]="car.price" pattern="^\$?[0-9]+(\.[0-9][0-9])?$" />
+            <div *ngIf="price.invalid && price.touched" class="alert alert-danger">
+                Price is required and should be in format like: 1 or 11.99 <br>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-group" [class.has-error]="speed.invalid && speed.touched">
+        <label for="speed" class="col-sm-2 control-label">Speed</label>
+        <div class="col-sm-10">
+            <input type="text"  class="form-control" id="speed" name="speed" placeholder="Car Speed" required
+                   #speed="ngModel" [(ngModel)]="car.speed" pattern="^\$?[0-9]{3}$" />
+            <div *ngIf="speed.invalid && speed.touched" class="alert alert-danger">
+                Speed is required and should be in format like: 250 <br>
+                Format: 3 digits
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" [class.has-error]="hasEngineTypeError">
+        <label class="col-sm-2 control-label">Engine Type</label>
+        <div class="col-sm-10">
+            <select class="form-control"
+                    name="size" #engineType
+                    (blur)="validateEngineType(engineType.value)"
+                    (change)="validateEngineType(engineType.value)"
+                    [(ngModel)]="car.engineType">
+                <option *ngFor="let et of selectEngineType">
+                    {{ et }}
+                </option>
+            </select>
+            <div *ngIf="hasEngineTypeError" class="alert alert-danger">
+                Please choose one of available Engine Types.
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary" value="Save"
+                    [disabled]="form.invalid"
+            >Save</button>
+        </div>
+    </div>
+</form>
+
+
